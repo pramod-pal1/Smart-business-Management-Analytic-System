@@ -1,0 +1,38 @@
+SmartBusinessSystem/
+│
+├── index.php                 # Home page (overview + login section)
+├── register.php              # Create new account (signup form)
+├── dashboard.php             # Main dashboard after login
+│
+├── products.php              # Product & inventory management
+├── sales.php                 # Sales management
+├── customers.php             # Customer management
+├── analytics.php             # Reports & charts
+│
+├── /assets/                  # Static files
+│   ├── /css/
+│   │   └── style.css
+│   ├── /js/
+│   │   ├── main.js
+│   │   └── chart.js
+│   └── /images/
+│       └── logo.png
+│
+├── /includes/                # Common reusable parts
+│   ├── header.php
+│   ├── navbar.php
+│   ├── sidebar.php
+│   └── footer.php
+│
+├── /config/                  # Settings & database
+│   └── db.php                # Database connection file
+│
+├── /functions/               # PHP logic (reusable functions)
+│   ├── auth_functions.php    # Login/Register logic
+│   ├── product_functions.php
+│   ├── sales_functions.php
+│   ├── customer_functions.php
+│   └── report_functions.php
+│
+└── /database/
+    └── smartbusiness.sql     # Database structure file
