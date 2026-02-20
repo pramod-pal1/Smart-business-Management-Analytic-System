@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 
     <!-- ✅ RESET LINK (FORM KE NICHE) -->
     <?php if ($resetLink): ?>
-      <div class="mt-6 p-4 bg-gray-100 rounded-lg break-words">
+      <div class="mt-6 p-4 bg-gray-100 rounded-lg">
         <p class="text-sm font-semibold text-gray-700 mb-2">
           Reset link (testing):
         </p>
