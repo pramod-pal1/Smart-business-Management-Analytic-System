@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 function require_role($allowed_roles = []) {
-    if (!in_array($_SESSION['role_id'], $allowed_roles)) {
+    if (!isset($_SESSION['role_id']) || !in_array((int) $_SESSION['role_id'], $allowed_roles, true)) {
         echo "<h1>Access Denied</h1>";
         exit;
     }

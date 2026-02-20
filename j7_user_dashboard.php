@@ -31,12 +31,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 3) {
   <aside class="w-64 bg-blue-700 text-white flex flex-col p-6 space-y-6 fixed left-0 top-0 h-full">
     <h2 class="text-2xl font-bold">Employee Panel</h2>
     <nav class="flex flex-col space-y-3">
-      <a href="j8_User_dashboard_content.php" target="contentFrame" class="bg-blue-600 px-4 py-2 rounded-lg font-semibold">Dashboard</a>
+      <a href="j8_user_dashboard_content.php" target="contentFrame" class="bg-blue-600 px-4 py-2 rounded-lg font-semibold">Dashboard</a>
       <a href="j14_reports.php" target="contentFrame" class="hover:bg-blue-600 px-4 py-2 rounded-lg">View Reports</a>
       <a href="j10_user_profile.php" target="contentFrame" class="hover:bg-blue-600 px-4 py-2 rounded-lg">Profile</a>
     </nav>
     <div class="mt-auto">
-      <a href="j1_login.php"
+      <a href="logout.php"
         class="text-sm bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Logout</a>
     </div>
   </aside>

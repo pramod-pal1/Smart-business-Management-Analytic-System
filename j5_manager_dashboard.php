@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 2) {
       <a href="j9_manager_profile.php" target="contentFrame" class="hover:bg-blue-600 px-4 py-2 rounded-lg">Profile</a>
     </nav>
     <div class="mt-auto">
-      <a href="j1_login.php" class="text-sm bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Logout</a>
+      <a href="logout.php" class="text-sm bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Logout</a>
     </div>
   </aside>
 

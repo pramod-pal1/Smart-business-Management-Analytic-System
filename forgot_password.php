@@ -4,7 +4,7 @@ require_once "includes/password_reset_logic.php";
 $resetLink = "";   // yahan link store hoga
 
 if (isset($_POST['submit'])) {
-    $resetLink = sendResetLink($_POST['email']);
+    $resetLink = sendResetLink($_POST['email'] ?? '');
 }
 ?>
 
@@ -56,10 +56,10 @@ if (isset($_POST['submit'])) {
         </p>
 
         <a 
-          href="<?= $resetLink ?>" 
+          href="<?= htmlspecialchars($resetLink) ?>" 
           class="text-blue-600 text-sm underline break-all"
         >
-          <?= $resetLink ?>
+          <?= htmlspecialchars($resetLink) ?>
         </a>
 
         <p class="text-xs text-gray-500 mt-2">

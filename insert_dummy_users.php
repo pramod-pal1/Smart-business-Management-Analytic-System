@@ -2,22 +2,21 @@
 require_once "connection/connect.php";
 
 $users = [
-    ['admin1', 'admin@gmail.com', 'admin123', 'admin'],
-    ['manager1', 'manager@gmail.com', 'manager123', 'manager'],
-    ['user1', 'user@gmail.com', 'user123', 'user']
+    ["Admin User", "admin@sbmas.com", "9999999999", "Head Office", "admin123", 1],
+    ["Manager User", "manager@sbmas.com", "8888888888", "Branch Office", "manager123", 2],
+    ["Employee User", "employee@sbmas.com", "7777777777", "Store Room", "user123", 3],
 ];
 
-foreach ($users as $u) {
-    $username = $u[0];
-    $email    = $u[1];
-    $password = password_hash($u[2], PASSWORD_DEFAULT);
-    $role     = $u[3];
+$stmt = mysqli_prepare(
+    $link,
+    "INSERT INTO users (name, email, phone, address, password, role_id) VALUES (?, ?, ?, ?, ?, ?)"
+);
 
-    mysqli_query($link,
-        "INSERT INTO users (username, email, password, role)
-         VALUES ('$username', '$email', '$password', '$role')"
-    );
+foreach ($users as $u) {
+    $hash = password_hash($u[4], PASSWORD_DEFAULT);
+    mysqli_stmt_bind_param($stmt, "sssssi", $u[0], $u[1], $u[2], $u[3], $hash, $u[5]);
+    mysqli_stmt_execute($stmt);
 }
 
-echo "✅ Dummy users inserted successfully";
-?>
+echo "Dummy users inserted successfully";
+

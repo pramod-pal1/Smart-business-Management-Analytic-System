@@ -1,0 +1,77 @@
+DEFAULT LOGIN IDS / PASSWORDS
+========================================
+1) Admin
+   User ID (Email): admin@sbmas.com
+   Password: admin123
+
+2) Manager
+   User ID (Email): manager@sbmas.com
+   Password: manager123
+
+3) User
+   User ID (Email): employee@sbmas.com
+   Password: user123
+
+Note:
+- Yeh default credentials `seed_users.php` aur updated `insert_dummy_users.php` ke according hain.
+- Login page me username field email use karti hai.
+
+
+CHANGES APPLIED IN PROJECT
+========================================
+1) Security: Password reset SQL injection fixed
+   - File: includes/password_reset_logic.php
+   - Raw SQL hata kar prepared statements use kiye.
+   - Reset ke baad same email ke saare reset tokens delete kiye.
+
+2) Security: Session hardening in login
+   - File: j1_login.php
+   - Successful login ke turant baad `session_regenerate_id(true)` add kiya.
+   - Forgot password link ko actual page se connect kiya.
+
+3) Security: Functional and safe registration backend added
+   - File: j2_register.php
+   - POST handling, validation, duplicate email check, password hashing, DB insert add kiya.
+   - Public signup ko role_id = 3 (normal user) par lock kiya.
+
+4) Security: Protected pages now require auth/role checks
+   - File: j4_admin_dashboard_content.php (Admin only)
+   - File: j6_manager_dashboard_content.php (Manager only)
+   - File: j8_user_dashboard_content.php (User only)
+   - File: j9_manager_profile.php (Manager only)
+   - File: j10_user_profile.php (User only)
+   - File: j11_customers.php (Admin/Manager)
+   - File: j12_products.php (Admin/Manager)
+   - File: j13_sales.php (Admin/Manager)
+   - File: j14_reports.php (All logged-in roles)
+   - File: j15_user_management.php (Admin only)
+
+5) Security: auth role check strict banaya
+   - File: auth_check.php
+   - Missing session role handling + strict typed role matching add ki.
+
+6) Logout properly implemented
+   - New file: logout.php
+   - Session unset + destroy karke login page redirect.
+   - Updated logout links:
+     - j3_admin_dashboard.php
+     - j5_manager_dashboard.php
+     - j7_user_dashboard.php
+
+7) Bug fix: user dashboard link casing fixed
+   - File: j7_user_dashboard.php
+   - `j8_User_dashboard_content.php` ko `j8_user_dashboard_content.php` kiya.
+
+8) Security/UX: forgot and reset password flow improved
+   - File: forgot_password.php
+     - Reset link output ko `htmlspecialchars` se escape kiya.
+   - File: reset_password.php
+     - Token validation UI flow improve kiya.
+     - Password length + confirm password checks add kiye.
+     - Success state me login link add kiya.
+
+9) DB consistency fix in dummy seed script
+   - File: insert_dummy_users.php
+   - Schema ko `users(name, email, phone, address, password, role_id)` ke saath align kiya.
+   - Prepared statement + password_hash use kiya.
+

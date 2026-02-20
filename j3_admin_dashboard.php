@@ -49,7 +49,7 @@ if ($_SESSION['role_id'] != 1) {
     </nav>
 
     <div class="mt-auto">
-      <a href="j1_login.php" class="text-sm bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Logout</a>
+      <a href="logout.php" class="text-sm bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100">Logout</a>
     </div>
   </aside>
 
