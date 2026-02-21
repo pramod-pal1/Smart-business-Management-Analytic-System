@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . "/../connection/connect.php";
 
 function sendResetLink($email) {
@@ -10,7 +10,7 @@ function sendResetLink($email) {
     }
 
     $token = bin2hex(random_bytes(32));
-    $expires = date("Y-m-d H:i:s", strtotime("+15 minutes"));
+    $expires = gmdate("Y-m-d H:i:s", time() + 900);
 
     $stmt = mysqli_prepare(
         $link,
@@ -27,7 +27,7 @@ function verifyToken($token) {
 
     $stmt = mysqli_prepare(
         $link,
-        "SELECT email, token, expires_at FROM password_resets WHERE token = ? AND expires_at > NOW() LIMIT 1"
+        "SELECT email, token, expires_at FROM password_resets WHERE token = ? AND expires_at > UTC_TIMESTAMP() LIMIT 1"
     );
     mysqli_stmt_bind_param($stmt, "s", $token);
     mysqli_stmt_execute($stmt);
@@ -53,4 +53,5 @@ function updatePassword($email, $password) {
     mysqli_stmt_bind_param($cleanupStmt, "s", $email);
     mysqli_stmt_execute($cleanupStmt);
 }
+
 
